@@ -1,0 +1,60 @@
+body {
+  position: relative;
+  width: 100%;
+  min-height: auto;
+  overflow-y: hidden;
+  background: url("../img/bg-pattern.png"), #7b4397;
+  /* fallback for old browsers */
+  background: url("../img/bg-pattern.png"), -webkit-linear-gradient(to left, #7b4397, #dc2430);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: url("../img/bg-pattern.png"), linear-gradient(to left, #6d3b0e, #8d4706);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: white;
+}
+
+.сenterTab {
+	text-align:center;
+}
+
+.action{
+	width:40px;
+	
+}
+
+.nav > .action {
+    display: inline-block;
+	cursor:pointer;	
+}
+
+.fa-trash-o{
+	color: red;
+}
+
+.fa-pencil-square-o{
+	color:green;
+}
+
+#addRec,
+#editRec{
+	color:black;
+}
+
+tbody tr:hover{
+	color:red;
+}
+
+.data{
+	width: 165px;
+}
+
+.data > div{
+	padding: 1px;
+}
+
+.data > .col-md-4{
+	padding-top: 5px;
+}
+
+.data .form-group{
+	margin-bottom:0px;
+}
