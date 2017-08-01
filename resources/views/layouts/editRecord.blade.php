@@ -8,7 +8,7 @@
 			</div>
 			<div class="modal-body">
 				<p>Укажите комментарий, выберите тип записи, укажите сумму</p>
-				@include('layouts.form')
+					@include('layouts.form', ['submitButtonText' => 'Изменить!'])
 				@include('errors.list')
 			</div>
 		</div>

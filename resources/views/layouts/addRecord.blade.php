@@ -8,7 +8,7 @@
 			<div class="modal-body">
 				<p>Укажите комментарий, выберите тип записи, укажите сумму</p>
 				{!! Form::open(['action' => 'OutlayIncomeController@addRecord']) !!}
-					@include('layouts.form')
+					@include('layouts.form', ['submitButtonText' => 'Добавить!'])
 				{!! Form::close() !!}
 				@include('errors.list')
 			</div>

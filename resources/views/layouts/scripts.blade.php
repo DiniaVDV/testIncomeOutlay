@@ -14,6 +14,7 @@
 			date = date.replace(/\//g, '_');
 			window.location.href = "{{asset('select_by_date')}}/" + date;
 		});
+		/******Get currency ****************/
         $(function (){
             $.ajax({
                 type:"GET",
@@ -55,7 +56,8 @@
                     console.log(data)
                 }
             });
-        })
+        });
+		/*****Get info about record from DB***************/
 		function editRec(id){			
 			$.ajax({
 				type:"GET",
@@ -65,11 +67,13 @@
 				},
 				success:function(data){
 					var outlay = $('#editRec').find('.typeOfRecord')[0];
-					
-					
 					var income = $('#editRec').find('.typeOfRecord')[1];
 					var amount = $('#editRec').find('#amount')[0];
 					var comment = $('#editRec').find('#comment')[0];
+					var created_at = $('#editRec').find('#created_at')[0];
+					var btn = $('#editRec').find('.btn')[0];
+					$(btn).attr("onclick", "changeRec(" + data.id + ")");
+					console.log(btn);
 					if(data.outlay){
 						$(outlay).prop("checked", true);		
 						$(amount).val(parseFloat(data.outlay).toFixed(2));
@@ -78,12 +82,45 @@
 						$(amount).val(parseFloat(data.income).toFixed(2));
 					}
 					$(comment).val(data.comment);
+					$(created_at).val(data.created_at);
 				},
 				error:function(data){
 					console.log(data);
 				}
 			});
 		}
+		/********Change record in DB*****************/
+		function changeRec(id){	
+			console.log(1);
+			var outlay = $('#editRec').find('.typeOfRecord')[0];
+			var income = $('#editRec').find('.typeOfRecord')[1];
+			var amount = $('#editRec').find('#amount')[0];
+			var comment = $('#editRec').find('#comment')[0];
+			var created_at = $('#editRec').find('#created_at')[0];
+			if($(outlay).prop("checked")){
+				var typeOfRecord = 'outlay';
+			}else if($(income).prop("checked")){
+				var typeOfRecord = 'income';
+			}
+			$.ajax({
+				type:"POST",
+				url:"{{asset('edit_record')}}/" + id,
+				data:{
+					typeOfRecord:typeOfRecord,
+					amount:$(amount).val(),
+					comment:$(comment).val(),	
+					created_at:$(created_at).val(),	
+				},
+				success:function(data){
+					location.reload();
+				},
+				error:function(data){
+					console.log(data);
+				}
+			});
+		}
+		
+
 	</script>
 </body>
 </html>

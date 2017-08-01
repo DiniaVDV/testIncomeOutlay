@@ -11,6 +11,7 @@ class CurrencyController extends Controller
     {
         $url = "https://api.privatbank.ua/p24api/pubinfo?exchange&coursid=5";
         $curl = curl_init($url);
+        dd($curl);
         if( $curl ){
             curl_setopt($curl,CURLOPT_RETURNTRANSFER,true);
             $page = curl_exec($curl);

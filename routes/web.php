@@ -14,6 +14,7 @@
 Route::get('/', 'OutlayIncomeController@index');
 
 Route::post('add_record', 'OutlayIncomeController@addRecord');
+Route::post('edit_record/{id}', 'OutlayIncomeController@editRecord');
 Route::get('delete/{id}', 'OutlayIncomeController@deleteRecord');
 Route::get('select_by_date/{date}', 'OutlayIncomeController@selectByDate');
 Route::get('get_record', 'OutlayIncomeController@getRecord');
